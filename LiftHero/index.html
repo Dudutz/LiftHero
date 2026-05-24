@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LiftHero transforma o registro de cargas da musculacao em uma jornada heroica de progresso, PRs e conquistas.">
+  <meta name="theme-color" content="#101014">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LiftHero - Evolua sua força">
+  <meta property="og:description" content="Registre cargas, acompanhe evolução, detecte platôs e desbloqueie conquistas heroicas.">
+  <meta property="og:image" content="assets/og-lifthero.svg">
+  <meta property="og:site_name" content="LiftHero">
+
+  <title>LiftHero - Jornada Heroica de Força</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="js/storage.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#app">Pular para o conteúdo</a>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">LH</div>
+        <div>
+          <strong>LiftHero</strong>
+          <span>Jornada de força</span>
+        </div>
+      </div>
+
+      <nav class="side-nav">
+        <button class="nav-item is-active" data-screen="dashboard" type="button">
+          <span aria-hidden="true">⌂</span>
+          Início
+        </button>
+        <button class="nav-item" data-screen="register" type="button">
+          <span aria-hidden="true">＋</span>
+          Missão
+        </button>
+        <button class="nav-item" data-screen="history" type="button">
+          <span aria-hidden="true">≡</span>
+          Histórico
+        </button>
+        <button class="nav-item" data-screen="evolution" type="button">
+          <span aria-hidden="true">↗</span>
+          Evolução
+        </button>
+        <button class="nav-item" data-screen="achievements" type="button">
+          <span aria-hidden="true">◇</span>
+          Hall
+        </button>
+      </nav>
+    </aside>
+
+    <main id="app" class="main-content" tabindex="-1">
+      <section class="screen is-active" id="screen-dashboard" aria-labelledby="dashboard-title">
+        <header class="screen-header">
+          <p class="eyebrow">LiftHero</p>
+          <h1 id="dashboard-title">Bem-vindo, Herói</h1>
+          <p>Sua evolução de força, PRs e missões em um só painel.</p>
+        </header>
+
+        <section class="hero-status" aria-labelledby="hero-status-title">
+          <div class="hero-emblem" id="hero-emblem" aria-hidden="true">I</div>
+          <div class="hero-status-body">
+            <div class="section-title-row">
+              <div>
+                <p class="eyebrow">Status do Herói</p>
+                <h2 id="hero-status-title">Gavião Arqueiro</h2>
+              </div>
+              <span class="level-pill" id="hero-level-pill">Nv. 1</span>
+            </div>
+            <p id="hero-level-description">O primeiro passo da jornada começa no próximo registro.</p>
+            <div class="progress-block">
+              <div class="progress-label">
+                <span id="next-level-label">Próximo nível: Batman</span>
+                <strong id="level-progress-value">0%</strong>
+              </div>
+              <div class="progress-track" aria-hidden="true">
+                <div class="progress-fill" id="level-progress-bar"></div>
+              </div>
+              <p class="progress-hint" id="level-progress-hint">Faltam 5.000 kg de força acumulada.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="alert mission-alert is-hidden" id="plateau-alert" role="status">
+          <div>
+            <strong>Missão crítica detectada</strong>
+            <p id="plateau-message">3 semanas sem novo PR.</p>
+          </div>
+          <button class="ghost-button" data-screen="evolution" type="button">Planejar evolução</button>
+        </div>
+
+        <section class="metrics-grid" aria-label="Resumo do progresso">
+          <article class="metric-card">
+            <span class="metric-icon" aria-hidden="true">⟡</span>
+            <p>Sequência de Missões</p>
+            <strong id="metric-streak">0 dias</strong>
+          </article>
+          <article class="metric-card metric-primary">
+            <span class="metric-icon" aria-hidden="true">⚡</span>
+            <p>Força Acumulada</p>
+            <strong id="metric-volume">0 kg</strong>
+            <small id="metric-comparison">Registre sua primeira missão.</small>
+          </article>
+          <article class="metric-card">
+            <span class="metric-icon" aria-hidden="true">★</span>
+            <p>Último PR</p>
+            <strong id="metric-pr">Nenhum</strong>
+            <small id="metric-pr-subtitle">Bata seu primeiro recorde.</small>
+          </article>
+        </section>
+
+        <section class="callout">
+          <div>
+            <p class="eyebrow">Próximo passo</p>
+            <h2>Complete uma missão hoje</h2>
+            <p>Cada registro alimenta seu gráfico, suas conquistas e seu nível heroico.</p>
+          </div>
+          <button class="primary-button" data-screen="register" type="button">Registrar Missão</button>
+        </section>
+      </section>
+
+      <section class="screen" id="screen-register" aria-labelledby="register-title">
+        <header class="screen-header">
+          <p class="eyebrow">Missão</p>
+          <h1 id="register-title">Registrar Missão</h1>
+          <p>Registre carga, séries e repetições sem perder tempo na academia.</p>
+        </header>
+
+        <div class="toast is-hidden" id="save-toast" role="status" aria-live="polite"></div>
+
+        <form class="workout-form" id="workout-form" novalidate>
+          <div class="form-field autocomplete-wrap">
+            <label for="exercise">Exercício</label>
+            <input id="exercise" name="exercise" type="text" autocomplete="off" placeholder="Buscar exercício..." aria-describedby="exercise-help exercise-error" required>
+            <p class="field-help" id="exercise-help">Busca tolera maiúsculas, minúsculas e ausência de acentos.</p>
+            <p class="field-error" id="exercise-error"></p>
+            <div class="autocomplete-list is-hidden" id="exercise-list" role="listbox" aria-label="Sugestões de exercícios"></div>
+          </div>
+
+          <div class="form-field">
+            <label for="date">Data do treino</label>
+            <input id="date" name="date" type="date" required>
+          </div>
+
+          <div class="number-grid">
+            <div class="form-field number-field">
+              <label for="sets">Séries</label>
+              <div class="stepper">
+                <button class="stepper-button" type="button" data-step-target="sets" data-step="-1" aria-label="Diminuir séries">−</button>
+                <input id="sets" name="sets" type="number" min="1" max="20" value="3" inputmode="numeric" required>
+                <button class="stepper-button" type="button" data-step-target="sets" data-step="1" aria-label="Aumentar séries">+</button>
+              </div>
+            </div>
+
+            <div class="form-field number-field">
+              <label for="reps">Repetições</label>
+              <div class="stepper">
+                <button class="stepper-button" type="button" data-step-target="reps" data-step="-1" aria-label="Diminuir repetições">−</button>
+                <input id="reps" name="reps" type="number" min="1" max="50" value="10" inputmode="numeric" required>
+                <button class="stepper-button" type="button" data-step-target="reps" data-step="1" aria-label="Aumentar repetições">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field number-field">
+            <label for="weight">Carga em kg</label>
+            <div class="stepper">
+              <button class="stepper-button" type="button" data-step-target="weight" data-step="-2.5" aria-label="Diminuir carga">−</button>
+              <input id="weight" name="weight" type="number" min="0" max="500" step="2.5" value="20" inputmode="decimal" required>
+              <button class="stepper-button" type="button" data-step-target="weight" data-step="2.5" aria-label="Aumentar carga">+</button>
+            </div>
+          </div>
+
+          <section class="generated-force" aria-label="Força gerada nesta missão">
+            <p>Força Gerada</p>
+            <strong id="generated-volume">600 kg</strong>
+          </section>
+
+          <button class="primary-button full-width" type="submit">Completar Missão</button>
+        </form>
+      </section>
+
+      <section class="screen" id="screen-history" aria-labelledby="history-title">
+        <header class="screen-header">
+          <p class="eyebrow">Arquivo</p>
+          <h1 id="history-title">Registro de Missões</h1>
+          <p id="history-count">Nenhuma missão registrada.</p>
+        </header>
+
+        <div class="toolbar">
+          <label for="history-filter">Filtrar por exercício</label>
+          <select id="history-filter">
+            <option value="all">Todos os exercícios</option>
+          </select>
+        </div>
+
+        <div class="history-list" id="history-list"></div>
+      </section>
+
+      <section class="screen" id="screen-evolution" aria-labelledby="evolution-title">
+        <header class="screen-header">
+          <p class="eyebrow">Análise</p>
+          <h1 id="evolution-title">Evolução</h1>
+          <p>Acompanhe a tendência de carga por exercício.</p>
+        </header>
+
+        <div class="toolbar">
+          <label for="exercise-filter">Exercício analisado</label>
+          <select id="exercise-filter"></select>
+        </div>
+
+        <section class="metrics-grid compact" aria-label="Métricas do exercício">
+          <article class="metric-card">
+            <p>Carga Máxima</p>
+            <strong id="exercise-max">0 kg</strong>
+          </article>
+          <article class="metric-card">
+            <p>Última Carga</p>
+            <strong id="exercise-last">0 kg</strong>
+          </article>
+          <article class="metric-card">
+            <p>Tendência</p>
+            <strong id="exercise-trend">Sem dados</strong>
+          </article>
+        </section>
+
+        <section class="chart-card" aria-labelledby="chart-title">
+          <div class="section-title-row">
+            <h2 id="chart-title">Histórico de Carga</h2>
+            <span class="spinner is-hidden" id="chart-spinner" aria-label="Carregando gráfico"></span>
+          </div>
+          <canvas id="evolution-chart" height="280" aria-label="Gráfico de evolução de carga" role="img"></canvas>
+          <p class="empty-note is-hidden" id="chart-empty">Registre pelo menos uma missão para visualizar o gráfico.</p>
+        </section>
+      </section>
+
+      <section class="screen" id="screen-achievements" aria-labelledby="achievements-title">
+        <header class="screen-header">
+          <p class="eyebrow">Recompensas</p>
+          <h1 id="achievements-title">Hall de Conquistas</h1>
+          <p>Veja sua escala de força e os marcos desbloqueados.</p>
+        </header>
+
+        <section class="levels-grid" id="levels-grid" aria-label="Níveis heroicos"></section>
+
+        <section aria-labelledby="epic-title">
+          <div class="section-title-row">
+            <div>
+              <p class="eyebrow">Marcos</p>
+              <h2 id="epic-title">Conquistas Épicas</h2>
+            </div>
+          </div>
+          <div class="achievements-grid" id="achievements-grid"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Navegação mobile">
+    <button class="nav-item is-active" data-screen="dashboard" type="button">
+      <span aria-hidden="true">⌂</span>
+      Início
+    </button>
+    <button class="nav-item" data-screen="register" type="button">
+      <span aria-hidden="true">＋</span>
+      Missão
+    </button>
+    <button class="nav-item" data-screen="history" type="button">
+      <span aria-hidden="true">≡</span>
+      Histórico
+    </button>
+    <button class="nav-item" data-screen="evolution" type="button">
+      <span aria-hidden="true">↗</span>
+      Evolução
+    </button>
+    <button class="nav-item" data-screen="achievements" type="button">
+      <span aria-hidden="true">◇</span>
+      Hall
+    </button>
+  </nav>
+</body>
+</html>
