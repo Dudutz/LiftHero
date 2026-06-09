@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: lifthero
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
+    envVars:
+      - key: SKIP_INSTALL_DEPS
+        value: true
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN

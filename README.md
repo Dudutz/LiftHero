@@ -40,7 +40,7 @@ Essa decisão garante funcionamento offline e evita expor chaves de API no front
 
 ## Critérios da A3 atendidos
 
-- Deploy estático pronto para GitHub Pages, Netlify ou Vercel.
+- Deploy estático pronto para Render.
 - Tags Open Graph no `index.html`.
 - Integração de dados com `LocalStorage`, arrays e JSON local.
 - UX de espera no carregamento do gráfico.
@@ -74,7 +74,7 @@ assets/
   og-lifthero.svg
 ```
 
-## Como executar
+## Como executar localmente
 
 Abra `index.html` no navegador ou publique a pasta em um serviço estático. Para testar o `fetch` do JSON local em alguns navegadores, use um servidor simples:
 
@@ -83,3 +83,17 @@ python3 -m http.server 8000
 ```
 
 Depois acesse `http://localhost:8000`.
+
+## Deploy no Render
+
+O projeto está preparado como Static Site no Render por meio do `render.yaml`.
+
+Configuração equivalente no Dashboard:
+
+- Service Type: Static Site
+- Branch: `main`
+- Build Command: deixar em branco
+- Publish Directory: `.`
+- Root Directory: deixar em branco se o repositório conectado for `Dudutz/LiftHero`
+
+Essa configuração funciona porque o projeto é HTML/CSS/JS puro e o `index.html` já fica na raiz do repositório.
