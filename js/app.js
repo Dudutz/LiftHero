@@ -78,6 +78,9 @@ const state = {
   chart: null,
 };
 
+const quickExerciseLimit = 6;
+const searchExerciseLimit = 8;
+
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
@@ -217,29 +220,40 @@ function showToast(message, isPR) {
 function bindAutocomplete() {
   const input = $("#exercise");
   input.addEventListener("input", renderAutocomplete);
+  input.addEventListener("pointerdown", renderAutocomplete);
+  input.addEventListener("click", renderAutocomplete);
   input.addEventListener("focus", renderAutocomplete);
   document.addEventListener("click", (event) => {
     if (!event.target.closest(".autocomplete-wrap")) {
       $("#exercise-list").classList.add("is-hidden");
+      input.setAttribute("aria-expanded", "false");
     }
   });
 }
 
-function renderAutocomplete() {
-  const query = $("#exercise").value.trim();
+function renderAutocomplete(event) {
+  const input = $("#exercise");
+  const query = input.value.trim();
   const list = $("#exercise-list");
-  if (!query) {
+  const isOpening = event && ["click", "focus", "pointerdown"].includes(event.type);
+  const isFocused = document.activeElement === input || isOpening;
+
+  if (!query && !isFocused) {
     list.classList.add("is-hidden");
     list.innerHTML = "";
+    input.setAttribute("aria-expanded", "false");
     return;
   }
 
-  const results = state.exercises
-    .filter((exercise) => normalize(exercise).includes(normalize(query)))
-    .slice(0, 8);
+  const results = query
+    ? state.exercises
+      .filter((exercise) => normalize(exercise).includes(normalize(query)))
+      .slice(0, searchExerciseLimit)
+    : state.exercises.slice(0, quickExerciseLimit);
 
   if (!results.length) {
     list.classList.add("is-hidden");
+    input.setAttribute("aria-expanded", "false");
     return;
   }
 
@@ -248,12 +262,14 @@ function renderAutocomplete() {
     .join("");
 
   list.classList.remove("is-hidden");
+  input.setAttribute("aria-expanded", "true");
 
   list.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
       $("#exercise").value = button.dataset.exercise;
       $("#exercise-list").classList.add("is-hidden");
       $("#exercise-error").textContent = "";
+      input.setAttribute("aria-expanded", "false");
     });
   });
 }

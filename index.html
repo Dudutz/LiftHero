@@ -137,10 +137,12 @@
         <form class="workout-form" id="workout-form" novalidate>
           <div class="form-field autocomplete-wrap">
             <label for="exercise">Exercício</label>
-            <input id="exercise" name="exercise" type="text" autocomplete="off" placeholder="Buscar exercício..." aria-describedby="exercise-help exercise-error" required>
+            <div class="autocomplete-control">
+              <input id="exercise" name="exercise" type="text" autocomplete="off" placeholder="Buscar exercício..." aria-describedby="exercise-help exercise-error" aria-controls="exercise-list" aria-autocomplete="list" aria-expanded="false" required>
+              <div class="autocomplete-list is-hidden" id="exercise-list" role="listbox" aria-label="Sugestões de exercícios"></div>
+            </div>
             <p class="field-help" id="exercise-help">Busca tolera maiúsculas, minúsculas e ausência de acentos.</p>
             <p class="field-error" id="exercise-error"></p>
-            <div class="autocomplete-list is-hidden" id="exercise-list" role="listbox" aria-label="Sugestões de exercícios"></div>
           </div>
 
           <div class="form-field">
