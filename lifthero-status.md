@@ -9,6 +9,9 @@
 ---
 
 ## Última Atualização
+📅 15/06/2026
+> Deploy público validado em `https://lifthero.onrender.com/`. Auditoria Lighthouse executada na URL pública com nota 100 em Acessibilidade; relatórios HTML/JSON salvos em `evidencias/`.
+
 📅 09/06/2026
 > Deploy público definido para Render Static Site. Arquivo `render.yaml` adicionado para publicar a raiz do repositório sem etapa de build.
 
@@ -44,7 +47,7 @@
 | Heatmap de frequência | cal-heatmap (vanilla JS, sem build tools) — candidato |
 | Layout | CSS Flexbox + Media Queries, Mobile First |
 | Direção visual | Em revisão — referência Hevy, tema escuro, azul inspirado no Capitão América, sem visual HQ/cartoon |
-| Deploy | Render Static Site |
+| Deploy | Render Static Site: `https://lifthero.onrender.com/` |
 | Repositório | GitHub configurado: `https://github.com/Dudutz/LiftHero.git` |
 
 **Estrutura de pastas atual:**
@@ -111,7 +114,7 @@ data/
 - [x] Tratamento silencioso de erro no JSON local
 - [x] Touch targets mínimos de 48px
 - [x] Sem scroll horizontal em mobile
-- [ ] Lighthouse > 90 em Acessibilidade
+- [x] Lighthouse > 90 em Acessibilidade — nota 100 na URL pública
 
 ---
 
@@ -119,15 +122,15 @@ data/
 
 | # | Critério | Peso | Status |
 |---|---|---|---|
-| 1 | Deploy público (Render) | 1,0 pt | 🟡 Configurado; falta criar serviço no Render e validar URL pública |
-| 2 | Tags Open Graph no `<head>` | 1,0 pt | ✅ Feito |
+| 1 | Deploy público (Render) | 1,0 pt | ✅ Feito — `https://lifthero.onrender.com/` |
+| 2 | Tags Open Graph no `<head>` | 1,0 pt | 🟡 Feito; recomenda-se trocar `og:image` para PNG/JPG absoluto |
 | 3 | Repositório GitHub com README estruturado | 1,0 pt | ✅ Feito |
 | 4 | Integração de API ou LocalStorage com arrays | 2,0 pts | ✅ Feito |
 | 5 | Spinner de loading + tratamento silencioso de erro | 2,0 pts | ✅ Feito |
-| 6 | Layout Mobile First, sem scroll horizontal | 2,0 pts | 🟡 Implementado; falta teste visual final |
+| 6 | Layout Mobile First, sem scroll horizontal | 2,0 pts | ✅ Feito — validado em mobile no deploy |
 | 7 | Touch targets mínimos de 48px (Lei de Fitts) | 2,0 pts | ✅ Feito |
 | 8 | Prevenção de erros (botões +/-, tolerância a digitação) | 2,0 pts | ✅ Feito |
-| 9 | Lighthouse > 90 em Acessibilidade | 2,0 pts | ⬜ Pendente |
+| 9 | Lighthouse > 90 em Acessibilidade | 2,0 pts | ✅ Feito — nota 100 |
 | 10 | Gamificação real: níveis, badges, feedback visual | 2,0 pts | ✅ Feito |
 
 ---
@@ -155,9 +158,9 @@ data/
 - [x] Implementar registro de treino com LocalStorage
 - [x] Implementar gráfico Chart.js
 - [ ] Definir e aplicar direção visual final
-- [ ] Testar no navegador em mobile e desktop
-- [ ] Rodar Lighthouse e salvar print da nota > 90
-- [ ] Fazer deploy público no Render
+- [x] Testar no navegador em mobile e desktop
+- [x] Rodar Lighthouse e salvar evidência da nota > 90
+- [x] Fazer deploy público no Render
 - [ ] Criar relatório P&D em PDF com evidências
 
 ---
@@ -171,10 +174,11 @@ data/
 | 24/05/2026 | 00:00 | Projeto reorganizado na pasta LiftHero; camada local `storage.js` criada para separar persistência e front-end | Codex |
 | 29/05/2026 | 19:57 | Status revisado; repositório GitHub registrado; pendências de visual, testes, Lighthouse, deploy e relatório atualizadas | Codex |
 | 09/06/2026 | 18:50 | Deploy definido para Render Static Site; `render.yaml` adicionado com publicação da raiz do repositório | Codex |
+| 15/06/2026 | 10:09 | Deploy público validado; Lighthouse público executado com nota 100 em Acessibilidade e evidências salvas em `evidencias/` | Codex |
 
 ---
 
 ## Dúvidas em Aberto
 - Definir data de entrega do material e apresentação ao vivo.
-- Criar o Static Site no Render e registrar a URL pública final.
+- Gerar imagem Open Graph final em PNG/JPG e usar URL absoluta no `og:image`.
 - Fechar direção visual final: referência Hevy, tema escuro e azul inspirado no Capitão América, evitando estética HQ/cartoon.

@@ -91,6 +91,20 @@ a:focus-visible {
   display: none;
 }
 
+.mobile-brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  padding: 0.25rem 0 1rem;
+}
+
+.mobile-brand img {
+  display: block;
+  width: min(190px, 62vw);
+  height: auto;
+}
+
 .screen {
   display: none;
   animation: fade-in 180ms ease-out;
@@ -788,14 +802,9 @@ input::placeholder {
   }
 
   .brand-mark {
-    display: grid;
-    place-items: center;
+    display: block;
     width: 46px;
     height: 46px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-2));
-    color: #071014;
-    font-weight: 900;
   }
 
   .brand span {
@@ -824,6 +833,10 @@ input::placeholder {
 
   .main-content {
     padding: 1.5rem 1.5rem 2rem;
+  }
+
+  .mobile-brand {
+    display: none;
   }
 
   .bottom-nav {
