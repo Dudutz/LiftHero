@@ -1,0 +1,7 @@
+.DS_Store
+
+# Materiais locais de apoio, gerados durante revisão e QA.
+materiais-internos/
+
+# Renderizações temporárias do relatório. O PDF/DOCX final fica em relatorio/.
+relatorio/rendered/

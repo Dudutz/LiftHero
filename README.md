@@ -41,12 +41,13 @@ Essa decisão garante funcionamento offline e evita expor chaves de API no front
 ## Critérios da A3 atendidos
 
 - Deploy estático pronto para Render.
-- Tags Open Graph no `index.html`.
+- Tags Open Graph no `index.html`, com imagem PNG absoluta 1200x630.
 - Integração de dados com `LocalStorage`, arrays e JSON local.
 - UX de espera no carregamento do gráfico.
 - Layout mobile-first sem dependência de framework.
 - Prevenção de erros com validação e controles `+`/`-`.
 - Gamificação com níveis de heróis, PR Badge, conquistas e alerta temático.
+- Lighthouse com nota 100 em Acessibilidade na URL pública.
 
 ## Escala de níveis
 
@@ -71,8 +72,25 @@ js/
 data/
   exercises.json
 assets/
-  og-lifthero.svg
+  lifthero-icon.png
+  lifthero-icon-dark.png
+  lifthero-logo.png
+  lifthero-mark.png
+  og-lifthero.png
+evidencias/
+  README.md
+  evidencia-deploy-render.png
+  evidencia-lighthouse-score.png
+  evidencia-mobile-ux.png
+  lighthouse-lifthero-accessibility.report.html
+  lighthouse-lifthero-accessibility.report.json
+relatorio/
+  Relatorio_PD_LiftHero_A3.docx
+  Relatorio_PD_LiftHero_A3.pdf
+render.yaml
 ```
+
+Arquivos intermediários de geração e revisão ficam fora do Git em `materiais-internos/`.
 
 ## Como executar localmente
 

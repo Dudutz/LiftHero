@@ -1,7 +1,7 @@
 # LiftHero — Status do Projeto
 
 ## Status Geral
-🟡 Em desenvolvimento
+🟢 Pronto para entrega técnica
 
 **Entrega do material:** a definir
 **Apresentação ao vivo:** a definir
@@ -9,6 +9,9 @@
 ---
 
 ## Última Atualização
+📅 16/06/2026
+> Identidade visual final aplicada com logotipo/ícones próprios em `assets/`, imagem Open Graph final em PNG absoluto (`1200x630`) e relatório P&D revisado para refletir as evidências atuais.
+
 📅 15/06/2026
 > Deploy público validado em `https://lifthero.onrender.com/`. Auditoria Lighthouse executada na URL pública com nota 100 em Acessibilidade; relatórios HTML/JSON salvos em `evidencias/`.
 
@@ -46,7 +49,7 @@
 | Gráficos | Chart.js via CDN |
 | Heatmap de frequência | cal-heatmap (vanilla JS, sem build tools) — candidato |
 | Layout | CSS Flexbox + Media Queries, Mobile First |
-| Direção visual | Em revisão — referência Hevy, tema escuro, azul inspirado no Capitão América, sem visual HQ/cartoon |
+| Direção visual | Finalizada — tema escuro, azul/ciano heroico e identidade própria unindo academia + super-herói |
 | Deploy | Render Static Site: `https://lifthero.onrender.com/` |
 | Repositório | GitHub configurado: `https://github.com/Dudutz/LiftHero.git` |
 
@@ -59,9 +62,22 @@ js/
   storage.js
   app.js
 assets/
-  og-lifthero.svg
+  lifthero-icon.png
+  lifthero-icon-dark.png
+  lifthero-logo.png
+  lifthero-mark.png
+  og-lifthero.png
 data/
   exercises.json
+evidencias/
+  lighthouse-lifthero-accessibility.report.html
+  lighthouse-lifthero-accessibility.report.json
+  evidencia-lighthouse-score.png
+  evidencia-deploy-render.png
+  evidencia-mobile-ux.png
+relatorio/
+  Relatorio_PD_LiftHero_A3.docx
+  Relatorio_PD_LiftHero_A3.pdf
 ```
 
 ---
@@ -90,6 +106,11 @@ data/
 - Duolingo: streak e feedback de recompensa
 - GitHub Contribution Heatmap: visualização de frequência (candidato: `cal-heatmap`)
 
+**Identidade visual final:**
+- Logotipo próprio com símbolo minimalista inspirado em super-herói e academia
+- Ícones e marca exportados em PNG para uso na interface, favicon e compartilhamento
+- Open Graph final em `assets/og-lifthero.png`, com URL absoluta no deploy público
+
 ---
 
 ## Funcionalidades
@@ -109,7 +130,7 @@ data/
 - [x] Conquistas Épicas — marcos de volume com referências reais
 
 ### Qualidade / Avaliação
-- [x] Tags Open Graph no `<head>`
+- [x] Tags Open Graph no `<head>` com imagem PNG absoluta 1200×630
 - [x] Spinner de loading no gráfico
 - [x] Tratamento silencioso de erro no JSON local
 - [x] Touch targets mínimos de 48px
@@ -123,7 +144,7 @@ data/
 | # | Critério | Peso | Status |
 |---|---|---|---|
 | 1 | Deploy público (Render) | 1,0 pt | ✅ Feito — `https://lifthero.onrender.com/` |
-| 2 | Tags Open Graph no `<head>` | 1,0 pt | 🟡 Feito; recomenda-se trocar `og:image` para PNG/JPG absoluto |
+| 2 | Tags Open Graph no `<head>` | 1,0 pt | ✅ Feito — PNG absoluto 1200×630 + Twitter Card |
 | 3 | Repositório GitHub com README estruturado | 1,0 pt | ✅ Feito |
 | 4 | Integração de API ou LocalStorage com arrays | 2,0 pts | ✅ Feito |
 | 5 | Spinner de loading + tratamento silencioso de erro | 2,0 pts | ✅ Feito |
@@ -146,6 +167,9 @@ data/
 - [x] Projeto reorganizado na pasta `LiftHero`
 - [x] Repositório Git configurado com remote no GitHub
 - [x] README estruturado criado
+- [x] Identidade visual final aplicada no projeto
+- [x] Imagem Open Graph final em PNG com URL absoluta no deploy
+- [x] Relatório P&D em PDF com evidências gerado
 
 ---
 
@@ -157,11 +181,11 @@ data/
 - [x] Estrutura base do projeto (pastas e arquivos)
 - [x] Implementar registro de treino com LocalStorage
 - [x] Implementar gráfico Chart.js
-- [ ] Definir e aplicar direção visual final
+- [x] Definir e aplicar direção visual final
 - [x] Testar no navegador em mobile e desktop
 - [x] Rodar Lighthouse e salvar evidência da nota > 90
 - [x] Fazer deploy público no Render
-- [ ] Criar relatório P&D em PDF com evidências
+- [x] Criar relatório P&D em PDF com evidências
 
 ---
 
@@ -170,15 +194,14 @@ data/
 | Data | Hora | Alteração | Autor |
 |---|---|---|---|
 | 07/05/2026 | 19:30 | Arquivo de status criado; concepção do projeto consolidada; estrutura de pastas definida; cal-heatmap adicionado como candidato | João |
-| 24/05/2026 | 00:00 | Protótipo do Figma analisado; versão HTML/CSS/JS Vanilla criada com LocalStorage, gamificação, histórico, evolução e README | Codex |
-| 24/05/2026 | 00:00 | Projeto reorganizado na pasta LiftHero; camada local `storage.js` criada para separar persistência e front-end | Codex |
-| 29/05/2026 | 19:57 | Status revisado; repositório GitHub registrado; pendências de visual, testes, Lighthouse, deploy e relatório atualizadas | Codex |
-| 09/06/2026 | 18:50 | Deploy definido para Render Static Site; `render.yaml` adicionado com publicação da raiz do repositório | Codex |
-| 15/06/2026 | 10:09 | Deploy público validado; Lighthouse público executado com nota 100 em Acessibilidade e evidências salvas em `evidencias/` | Codex |
+| 24/05/2026 | 00:00 | Protótipo do Figma analisado; versão HTML/CSS/JS Vanilla criada com LocalStorage, gamificação, histórico, evolução e README | Luiz Eduardo |
+| 24/05/2026 | 00:00 | Projeto reorganizado na pasta LiftHero; camada local `storage.js` criada para separar persistência e front-end | Luiz Eduardo |
+| 29/05/2026 | 19:57 | Status revisado; repositório GitHub registrado; pendências de visual, testes, Lighthouse, deploy e relatório atualizadas | Luiz Eduardo |
+| 09/06/2026 | 18:50 | Deploy definido para Render Static Site; `render.yaml` adicionado com publicação da raiz do repositório | Luiz Eduardo |
+| 15/06/2026 | 10:09 | Deploy público validado; Lighthouse público executado com nota 100 em Acessibilidade e evidências salvas em `evidencias/` | Luiz Eduardo |
+| 16/06/2026 | 18:55 | Identidade visual final, Open Graph PNG absoluto e relatório P&D revisado com evidências atuais | Luiz Eduardo |
 
 ---
 
 ## Dúvidas em Aberto
 - Definir data de entrega do material e apresentação ao vivo.
-- Gerar imagem Open Graph final em PNG/JPG e usar URL absoluta no `og:image`.
-- Fechar direção visual final: referência Hevy, tema escuro e azul inspirado no Capitão América, evitando estética HQ/cartoon.
